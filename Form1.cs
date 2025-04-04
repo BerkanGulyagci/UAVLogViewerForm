@@ -23,23 +23,31 @@ namespace UAVLogViewer
             this.gMapControl = new GMap.NET.WindowsForms.GMapControl();
             this.SuspendLayout();
 
-            // gMapControl
-            this.gMapControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            // Bu satırı bırakın:
+            // gMapControl (Harita kontrolü)
+            this.gMapControl.Dock = System.Windows.Forms.DockStyle.Left;  // Haritayı sol tarafa yaslıyoruz
+            this.gMapControl.Width = 500;  // Harita genişliği 500px olacak
             this.gMapControl.MinZoom = 0;
             this.gMapControl.MaxZoom = 24;
             this.gMapControl.Location = new System.Drawing.Point(0, 0);
             this.gMapControl.Margin = new System.Windows.Forms.Padding(4);
             this.gMapControl.Name = "gMapControl";
-            this.gMapControl.Size = new System.Drawing.Size(800, 600);
-            this.gMapControl.TabIndex = 0;
-            this.gMapControl.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance; // Google haritası
-            this.gMapControl.MinZoom = 0;
-            this.gMapControl.MaxZoom = 24;
+            this.gMapControl.Size = new System.Drawing.Size(500, 600);  // Boyutlandırma
+            this.gMapControl.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
             this.gMapControl.Zoom = 10;
 
-            // Form1
+            // Chart (Grafik)
+            this.chart1.Location = new System.Drawing.Point(510, 100); // Grafiği sağ tarafa yerleştiriyoruz
+            this.chart1.Size = new System.Drawing.Size(800, 300);  // Chart boyutu
+            this.chart1.Name = "chart1";
+
+            // ListBox (Veri listesi)
+            this.listBox1.Location = new System.Drawing.Point(510, 400); // ListBox'ı alttan yerleştiriyoruz
+            this.listBox1.Size = new System.Drawing.Size(800, 200); // ListBox boyutu
+
+            // Form1 (Formu tamamlıyoruz)
             this.Controls.Add(this.gMapControl);
+            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.listBox1);
             this.Name = "Form1";
             this.Text = "UAV Log Viewer";
             this.ResumeLayout(false);
@@ -93,7 +101,7 @@ namespace UAVLogViewer
                     {
                         long totalLength = reader.BaseStream.Length;
                         long currentPosition = 0;
-                        long maxRecords = 10000000000000000; // Okunacak maksimum veri sayısı
+                        long maxRecords = 1000; // Okunacak maksimum veri sayısı
 
                         while (reader.BaseStream.Position < totalLength && tempDataList.Count < maxRecords)
                         {
@@ -129,18 +137,19 @@ namespace UAVLogViewer
                 {
                     dataList = tempDataList;
 
-                    // Burada GPS verilerinizi ayrıştırmanız gerekebilir.
-                    // GPS noktalarını PointLatLng formatına dönüştürün.
-                    List<GMap.NET.PointLatLng> gpsPoints = new List<GMap.NET.PointLatLng>();
+                    // ListBox'ı temizliyoruz ve verileri ekliyoruz
+                    listBox1.Items.Clear();
+                    foreach (var data in dataList)
+                    {
+                        listBox1.Items.Add(data);
+                    }
 
-                    // Örnek: GPS verilerini listeye ekleyelim (latitude, longitude)
-                    gpsPoints.Add(new GMap.NET.PointLatLng(40.712776, -74.005974)); // Örnek: New York
-                    gpsPoints.Add(new GMap.NET.PointLatLng(34.052235, -118.243683)); // Örnek: Los Angeles
-
-                    // GPS noktalarını harita üzerinde çiziyoruz
-                    DrawFlightRoute(gpsPoints);
-
-                    MessageBox.Show("File processing completed successfully!");
+                    // Chart'ı temizliyoruz ve verileri ekliyoruz
+                    chart1.Series[0].Points.Clear();
+                    foreach (var data in dataList)
+                    {
+                        chart1.Series[0].Points.AddY(data);
+                    }
                 }
                 else
                 {
@@ -148,6 +157,7 @@ namespace UAVLogViewer
                 }
             }
 
+            // ProgressBar'ı sıfırlıyoruz
             progressBar1.Value = 0;
         }
 
@@ -163,6 +173,7 @@ namespace UAVLogViewer
         {
             try
             {
+                // Kullanıcıdan min ve max değerlerini alıyoruz
                 int minValue = int.Parse(txtMinValue.Text);
                 int maxValue = int.Parse(txtMaxValue.Text);
 

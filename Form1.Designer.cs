@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnLoadFile = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -38,8 +38,6 @@
             this.btnFilterData = new System.Windows.Forms.Button();
             this.txtMaxValue = new System.Windows.Forms.TextBox();
             this.txtMinValue = new System.Windows.Forms.TextBox();
-            this.btnCalculateStatistics = new System.Windows.Forms.Button();
-            this.btnNormalizeData = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -47,7 +45,7 @@
             // 
             // btnLoadFile
             // 
-            this.btnLoadFile.Location = new System.Drawing.Point(999, 546);
+            this.btnLoadFile.Location = new System.Drawing.Point(771, 747);
             this.btnLoadFile.Name = "btnLoadFile";
             this.btnLoadFile.Size = new System.Drawing.Size(111, 35);
             this.btnLoadFile.TabIndex = 0;
@@ -72,23 +70,23 @@
             // 
             // chart1
             // 
-            chartArea10.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            this.chart1.Legends.Add(legend10);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(83, 37);
             this.chart1.Name = "chart1";
-            series10.ChartArea = "ChartArea1";
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            this.chart1.Series.Add(series10);
-            this.chart1.Size = new System.Drawing.Size(487, 556);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(640, 665);
             this.chart1.TabIndex = 3;
             this.chart1.Text = "chart1";
             // 
             // btnFilterData
             // 
-            this.btnFilterData.Location = new System.Drawing.Point(707, 232);
+            this.btnFilterData.Location = new System.Drawing.Point(1009, 747);
             this.btnFilterData.Name = "btnFilterData";
             this.btnFilterData.Size = new System.Drawing.Size(101, 35);
             this.btnFilterData.TabIndex = 4;
@@ -98,40 +96,22 @@
             // 
             // txtMaxValue
             // 
-            this.txtMaxValue.Location = new System.Drawing.Point(707, 180);
+            this.txtMaxValue.Location = new System.Drawing.Point(1009, 721);
             this.txtMaxValue.Name = "txtMaxValue";
             this.txtMaxValue.Size = new System.Drawing.Size(101, 20);
             this.txtMaxValue.TabIndex = 5;
             // 
             // txtMinValue
             // 
-            this.txtMinValue.Location = new System.Drawing.Point(707, 206);
+            this.txtMinValue.Location = new System.Drawing.Point(1009, 682);
             this.txtMinValue.Name = "txtMinValue";
             this.txtMinValue.Size = new System.Drawing.Size(101, 20);
             this.txtMinValue.TabIndex = 6;
             // 
-            // btnCalculateStatistics
-            // 
-            this.btnCalculateStatistics.Location = new System.Drawing.Point(833, 645);
-            this.btnCalculateStatistics.Name = "btnCalculateStatistics";
-            this.btnCalculateStatistics.Size = new System.Drawing.Size(131, 26);
-            this.btnCalculateStatistics.TabIndex = 7;
-            this.btnCalculateStatistics.Text = "btnCalculateStatistics";
-            this.btnCalculateStatistics.UseVisualStyleBackColor = true;
-            // 
-            // btnNormalizeData
-            // 
-            this.btnNormalizeData.Location = new System.Drawing.Point(999, 649);
-            this.btnNormalizeData.Name = "btnNormalizeData";
-            this.btnNormalizeData.Size = new System.Drawing.Size(131, 22);
-            this.btnNormalizeData.TabIndex = 8;
-            this.btnNormalizeData.Text = "btnNormalizeData";
-            this.btnNormalizeData.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(629, 183);
+            this.label1.Location = new System.Drawing.Point(948, 689);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 9;
@@ -140,7 +120,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(632, 209);
+            this.label2.Location = new System.Drawing.Point(948, 728);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 10;
@@ -150,11 +130,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1197, 707);
+            this.ClientSize = new System.Drawing.Size(1279, 794);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnNormalizeData);
-            this.Controls.Add(this.btnCalculateStatistics);
             this.Controls.Add(this.txtMinValue);
             this.Controls.Add(this.txtMaxValue);
             this.Controls.Add(this.btnFilterData);
@@ -179,8 +157,6 @@
         private System.Windows.Forms.Button btnFilterData;
         private System.Windows.Forms.TextBox txtMaxValue;
         private System.Windows.Forms.TextBox txtMinValue;
-        private System.Windows.Forms.Button btnCalculateStatistics;
-        private System.Windows.Forms.Button btnNormalizeData;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }
